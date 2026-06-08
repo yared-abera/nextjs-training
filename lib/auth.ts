@@ -1,4 +1,3 @@
-
 import { betterAuth } from "better-auth/minimal"
 import { prismaAdapter } from "better-auth/adapters/prisma"
 import { prisma } from "./db"
