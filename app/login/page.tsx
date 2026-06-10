@@ -29,13 +29,16 @@ export default function LoginPage() {
         email: data.email,
         password: data.password,
       })
-
-      if (result.data) {
-        router.refresh()
-        router.push("/")
-      } else {
-        alert(result.error?.message ?? "Invalid credentials")
-      }
+ 
+    if (result.data) {
+      router.refresh()
+    const role = result.data.user.role
+    if (role === "CLIENT") {
+    router.push("/jobs/create")
+   } else {
+    router.push("/jobs")
+   }
+}
     } catch (error) {
       console.error("Login error:", error)
       alert("Something went wrong")

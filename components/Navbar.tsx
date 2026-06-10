@@ -23,16 +23,25 @@ export default function Navbar() {
           </div>
 
           <div className="hidden md:flex items-center space-x-6">
-            <a href="/jobs" className="text-gray-700 hover:text-blue-600">
-              Jobs
-            </a>
+          
+        {user?.role === "CLIENT" && (
+        <a href="/jobs/create" className="text-gray-700 hover:text-blue-600">
+        Post a Job
+        </a>
+        )}
+        <a href="/jobs" className="text-gray-700 hover:text-blue-600">
+        Jobs
+         </a>
+            
           </div>
 
           {isPending ? null : user ? (
             <div className="flex items-center gap-3">
-              <span className="text-gray-800 font-medium">
-                {user.name}
-              </span>
+              
+         <span className="text-gray-800 font-medium">
+          {user.name}
+          <span className="text-xs text-gray-400 ml-2">({user.role})</span>
+         </span>
               <button
                 type="button"
                 onClick={() => authClient.signOut()}

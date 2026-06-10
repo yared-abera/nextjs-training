@@ -90,14 +90,16 @@ model Job {
   applications Application[]
 }
 
+// prisma/schema.prisma
+
 model Application {
-  id            String   @id @default(cuid())
-  freelancerId  String
-  freelancer    User     @relation(fields: [freelancerId], references: [id])
-
-  jobId         String
-  job           Job      @relation(fields: [jobId], references: [id])
-
-  coverLetter   String
-  createdAt     DateTime @default(now())
+  id           String   @id @default(cuid())
+  freelancerId String
+  freelancer   User     @relation(fields: [freelancerId], references: [id])
+  jobId        String
+  job          Job      @relation(fields: [jobId], references: [id])
+  coverLetter  String
+  createdAt    DateTime @default(now())
+  
+  @@unique([freelancerId, jobId])
 }

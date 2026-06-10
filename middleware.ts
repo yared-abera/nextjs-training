@@ -8,6 +8,7 @@ export const config = {
   matcher: [
     "/dashboard/:path*",
     "/jobs/create",
+    "/jobs/:jobId/edit",
     "/messages/:path*",
     "/profile/:path*"
   ]
